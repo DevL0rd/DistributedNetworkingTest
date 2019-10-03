@@ -1,0 +1,8 @@
+{
+	"author": "Dustin Harris",
+	"enabled": true,
+	"loadWhenInWorkerMode": true,
+	"loadPriority": "-1",
+	"name": "Distributed Processing Test",
+	"varName": "DistributedProcessingTest"
+}
