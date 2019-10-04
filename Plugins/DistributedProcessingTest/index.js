@@ -44,18 +44,14 @@ function test() {
         endTime = new Date().getTime();
         var timeElapsed = endTime - startTime;
         log("Local test time: " + timeElapsed, false, "DP-Test");
+        // workerIo.queueJob("addAll", randWork, function (data) {
+        // });
         startTime = new Date().getTime();
-        workerIo.queueJob("addAll", randWork, function (data) {
+        workerIo.doDistributedJob("addAll", randWork, function (results) {
             endTime = new Date().getTime();
             var timeElapsed = endTime - startTime;
-            log("Single Job test time: " + timeElapsed, false, "DP-Test");
-            startTime = new Date().getTime();
-            workerIo.doDistributedJob("addAll", randWork, function (results) {
-                endTime = new Date().getTime();
-                var timeElapsed = endTime - startTime;
-                log("Distributed Job test time: " + timeElapsed, false, "DP-Test");
-                setTimeout(test, 0);
-            });
+            log("Distributed Job test time: " + timeElapsed, false, "DP-Test");
+            setTimeout(test, 0);
         });
     } else { //if no workers do the work here
         log("no workers connected", false, "DP-Test");
