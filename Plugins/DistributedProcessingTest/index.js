@@ -31,6 +31,9 @@ function init(pluginExports, settings, events, io, nLog, commands, nWorkerIo) {
     }
 
 }
+var localTestTime = 0;
+var distributedTestTime = 0;
+var testTimeout;
 function test() {
     if (workerIo.workerCount) { //if workers are available use them
         var randWork = [];
@@ -42,16 +45,19 @@ function test() {
         startTime = new Date().getTime();
         addAll(randWork);
         endTime = new Date().getTime();
-        var timeElapsed = endTime - startTime;
-        log("Local test time: " + timeElapsed, false, "DP-Test");
+        localTestTime = endTime - startTime;
+        log("Local test time: " + localTestTime, false, "DP-Test");
         // workerIo.queueJob("addAll", randWork, function (data) {
         // });
         startTime = new Date().getTime();
         workerIo.doDistributedJob("addAll", randWork, function (results) {
             endTime = new Date().getTime();
-            var timeElapsed = endTime - startTime;
-            log("Distributed Job test time: " + timeElapsed, false, "DP-Test");
-            setTimeout(test, 0);
+            distributedTestTime = endTime - startTime;
+            log("Distributed Job test time: " + distributedTestTime, false, "DP-Test");
+            testTimeout = setTimeout(test, 0);
+            var fasterBy = localTestTime - distributedTestTime;
+            var speedPercent = 100 - Math.floor((distributedTestTime / localTestTime) * 100);
+            log("Distributed test is faster by " + fasterBy + "ms (" + speedPercent + "%)")
         });
     } else { //if no workers do the work here
         log("no workers connected", false, "DP-Test");
