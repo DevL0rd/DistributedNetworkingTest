@@ -47,10 +47,10 @@ function test() {
         endTime = new Date().getTime();
         localTestTime = endTime - startTime;
         log("Local test time: " + localTestTime, false, "DP-Test");
-        // workerIo.queueJob("addAll", randWork, function (data) {
+        // workerIo.queueJob("addAll", randWork, {/*Pass empty global data*/ }, function (data) {
         // });
         startTime = new Date().getTime();
-        workerIo.doDistributedJob("addAll", randWork, function (results) {
+        workerIo.doDistributedJob("addAll", randWork, {/*Pass empty global data*/ }, function (results) {
             endTime = new Date().getTime();
             distributedTestTime = endTime - startTime;
             log("Distributed Job test time: " + distributedTestTime, false, "DP-Test");
