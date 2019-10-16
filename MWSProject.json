@@ -1,6 +1,6 @@
 {
-	"Name": "DistributedNetworkingTest",
-	"Author": "DevL0rd",
+	"Name": "Distributed Networking Test",
+	"Author": "",
 	"IP": "0.0.0.0",
 	"PORT": 80,
 	"timeout": 5000,
@@ -12,6 +12,11 @@
 	],
 	"webRoot": "../DistributedNetworkingTest/WebRoot",
 	"pluginsPath": "../DistributedNetworkingTest/Plugins",
+	"upload": {
+		"enabled": true,
+		"limitMB": 0,
+		"path": "../DistributedNetworkingTest/Uploads"
+	},
 	"throttling": {
 		"videoBitRateKB": 51000,
 		"audioBitRateKB": 230,
@@ -19,6 +24,7 @@
 	},
 	"defaultHeaders": {
 		"Cache-Control": "max-age=0",
+		"X-Frame-Options": "SAMEORIGIN",
 		"X-XSS-Protection": "1; mode=block",
 		"X-Content-Type-Options": "nosniff"
 	},
@@ -50,11 +56,11 @@
 		],
 		"errorNamespacePrintFilter": []
 	},
-	"projectPath": "../DistributedNetworkingTest",
 	"clustering": {
 		"workerPORT": 8080,
-		"enabled": false,
+		"enabled": true,
 		"clusteredFileSync": false,
-		"workerPassword": "$2a$08$QS2m8v3lGwWelBzw2W60UelvKdYLUwjlCNP07.UNnT4r9SsxgcXGK"
-	}
+		"workerPassword": "$2a$08$ZdhlR/H9noFRYXZCu9qPaebK/NnjxX6Pw6D9QQXnPJuhM7ds.qJxi"
+	},
+	"projectPath": "../DistributedNetworkingTest"
 }
