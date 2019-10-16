@@ -14,8 +14,7 @@
 	"pluginsPath": "../DistributedNetworkingTest/Plugins",
 	"upload": {
 		"enabled": true,
-		"limitMB": 0,
-		"path": "../DistributedNetworkingTest/Uploads"
+		"limitMB": 0
 	},
 	"throttling": {
 		"videoBitRateKB": 51000,
